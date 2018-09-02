@@ -1,0 +1,6 @@
+exports.SYSTEM_ERROR_CODE = 500;
+exports.REQUEST_CREATED_CODE = 201;
+exports.REQUEST_SUCCESS  = 200;
+exports.REQUEST_FAILURE = 400;
+exports.REQUEST_AUTH_FAILURE = 203;
+exports.JWT_KEY = "serect_key_123" 

@@ -8,6 +8,7 @@ const mongoose = require('mongoose')
 //Add Router
 const productRouter = require('./api/router/products');
 const ordersRouter = require('./api/router/orders');
+const userRouter = require('./api/router/users');
 
 //connect mongoose db
 
@@ -19,10 +20,10 @@ mongoose.connect('mongodb+srv://admin:admin@cluster0-byxd6.mongodb.net/test?retr
     }
     console.log('connect!!!');
 });
-
+mongoose.Promise = global.Promise;
 //Tracking Log
 app.use(morgan('dev'))
-
+app.use('/uploads',express.static('uploads/'));
 //Parser json body
 app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
@@ -44,7 +45,7 @@ app.use((req, res, next) => {
 //Router which should handle request
 app.use('/products', productRouter);
 app.use('/orders', ordersRouter);
-
+app.use('/users', userRouter);
 //Handle Error
 app.use((req, res, next) => {
     const error = new Error("Not found");
